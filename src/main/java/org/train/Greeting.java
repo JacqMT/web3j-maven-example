@@ -10,6 +10,7 @@ import org.web3j.crypto.Credentials;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.example.generated.Greeter;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Contract;
 import org.web3j.tx.ManagedTransaction;
@@ -33,5 +34,12 @@ public class Greeting {
 
         Utf8String greeting = contract.greet().get();
         System.out.println(greeting.getValue());
+
+        TransactionReceipt transactionReceipt =
+                contract.newGreeting(new Utf8String("Guten Tag, und willkommen!")).get();
+        System.out.println(transactionReceipt.getTransactionHash());
+
+        Utf8String newGreeting = contract.greet().get();
+        System.out.println(newGreeting.getValue());
     }
 }

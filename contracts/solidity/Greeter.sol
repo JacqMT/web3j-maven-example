@@ -14,4 +14,8 @@ contract greeter is mortal {
     function greet() public constant returns (string) {
         return greeting;
     }
+    //setter
+    function newGreeting(string _greeting) public {
+        greeting = _greeting;
+    }
 }
